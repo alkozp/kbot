@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"time"
 
@@ -34,6 +35,19 @@ to quickly create a Cobra application.`,
 			Token:  TeleToken,
 			Poller: &telebot.LongPolle{Timeout: 10 * time.Second},
 		})
+
+		if err != nil {
+			log.Fatalf("Please check TELE_TOCKEN env variable. %s", err)
+			return
+		}
+
+		kbot.Handle(telebot.OnText, func(m telebot.Context) error {
+
+			log.Print(m.Message().Payload, m.Text())
+			return err
+		})
+
+		kbot.Start()
 	},
 }
 
