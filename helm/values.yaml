@@ -6,7 +6,8 @@ replicaCount: 1
 
 image:
   repository: alkozp
-  tag: "v1.0.6-version"
+  tag: "v1.0.6-53fd485"
+  arch: amd64
 
 secret:
   name: kbot
