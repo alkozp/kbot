@@ -28,7 +28,9 @@ pipeline {
         stage("build") {
             steps {
               echo 'BUILD EXECUTION STARTED'
-              sh 'make build'
+              if (OS=Linux) {
+                sh 'make build'
+                }
             }
         }
 
