@@ -31,27 +31,27 @@ pipeline {
                     echo 'BUILD EXECUTION STARTED'
                     echo "Build for platform ${params.OS}"
                     echo "Build for platform ${params.ARCH}"
-                    if (params.OS.contains('linux')) {
-                        if (params.ARCH.contains('amd64')){
+                    if ((params.OS.contains('linux')) || (params.OS.contains('all'))) {
+                        if ((params.ARCH.contains('amd64')) || (params.ARCH.contains('all'))){
                             sh 'make linux amd64'
                         }
-                        if (params.ARCH.contains('arm64')){
+                        if ((params.ARCH.contains('arm64')) || (params.ARCH.contains('all'))){
                             sh 'make linux arm64'
                         } 
                     } 
-                    if (params.OS.contains('darwin')) {
-                        if (params.ARCH.contains('amd64')){
+                    if ((params.OS.contains('darwin')) || (params.OS.contains('all'))) {
+                        if ((params.ARCH.contains('amd64')) || (params.ARCH.contains('all'))){
                             sh 'make darwin amd64'
                         }
-                        if (params.ARCH.contains('arm64')){
+                        if ((params.ARCH.contains('arm64')) || (params.ARCH.contains('all'))){
                             sh 'make darwin arm64'
                         } 
                     }
-                    if (params.OS.contains('windows')) {
-                        if (params.ARCH.contains('amd64')){
+                    if ((params.OS.contains('windows')) || (params.OS.contains('all'))) {
+                        if ((params.ARCH.contains('amd64')) || (params.ARCH.contains('all'))){
                             sh 'make windows amd64'
                         }
-                        if (params.ARCH.contains('arm64')){
+                        if ((params.ARCH.contains('arm64')) || (params.ARCH.contains('all'))){
                             sh 'make windows arm64'
                         } 
                     }
