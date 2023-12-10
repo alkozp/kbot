@@ -27,24 +27,37 @@ pipeline {
 
         stage("build") {
             steps {
-              echo 'BUILD EXECUTION STARTED'
-              echo "Build for platform ${params.OS}"
-              if (params.OS=Linux) {
-                sh 'make build'
+                script {
+                    echo 'BUILD EXECUTION STARTED'
+                    echo "Build for platform ${params.OS}"
+                    echo "Build for platform ${params.ARCH}"
+                    if (params.OS.contains('linux')) {
+                        if (params.ARCH.contains('amd64')){
+                            sh 'make linux amd64'
+                        }
+                        if (params.ARCH.contains('arm64')){
+                            sh 'make linux arm64'
+                        } 
+                    } 
+                    if (params.OS.contains('darwin')) {
+                        if (params.ARCH.contains('amd64')){
+                            sh 'make darwin amd64'
+                        }
+                        if (params.ARCH.contains('arm64')){
+                            sh 'make darwin arm64'
+                        } 
+                    }
+                    if (params.OS.contains('windows')) {
+                        if (params.ARCH.contains('amd64')){
+                            sh 'make windows amd64'
+                        }
+                        if (params.ARCH.contains('arm64')){
+                            sh 'make windows arm64'
+                        } 
+                    }
                 }
             }
         }
-
-    // stages {
-    //     stage('Example') {
-    //         steps {
-    //             echo "Build for platform ${params.OS}"
-
-    //             echo "Build for arch: ${params.ARCH}"
-
-    //         }
-    //     }
-    // }
 
         stage("image") {
             steps {
