@@ -4,8 +4,9 @@
 
 replicaCount: 1
 image:
-  registry: "ghcr.io"
-  repository: "alkozp/kbot"
+  #registry: "ghcr.io"
+  registry: alkozp
+  #repository: "alkozp/kbot"
   tag: "v1.0.6-fc30962"
   os: linux
   arch: amd64
