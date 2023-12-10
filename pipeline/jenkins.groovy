@@ -28,7 +28,8 @@ pipeline {
         stage("build") {
             steps {
               echo 'BUILD EXECUTION STARTED'
-              if (OS=Linux) {
+              echo "Build for platform ${params.OS}"
+              if (params.OS=Linux) {
                 sh 'make build'
                 }
             }
