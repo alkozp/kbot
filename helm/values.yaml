@@ -5,7 +5,7 @@
 replicaCount: 1
 image:
   repository: "ghcr.io"
-  tag: "vv1.0.6-bb13f0f"
+  tag: "v1.0.6-c252f8c"
   os: linux
   arch: amd64
 secret:
